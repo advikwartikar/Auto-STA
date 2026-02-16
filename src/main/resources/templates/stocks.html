@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Browse Stocks</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', sans-serif; background: #f5f7fa; }
+        .navbar { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 15px 20px; }
+        .navbar-content { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .navbar h1 { font-size: 22px; }
+        .navbar-links { display: flex; gap: 15px; }
+        .navbar a { color: white; text-decoration: none; padding: 8px 16px; border-radius: 5px; }
+        .navbar a:hover { background: rgba(255,255,255,0.2); }
+        .container { max-width: 1400px; margin: 30px auto; padding: 0 20px; }
+        .header { background: white; padding: 25px; border-radius: 10px; margin-bottom: 20px; }
+        .search-box { padding: 10px; border: 2px solid #e0e0e0; border-radius: 5px; width: 300px; font-size: 14px; }
+        .stocks-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+        .stock-card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); transition: transform 0.3s; cursor: pointer; }
+        .stock-card:hover { transform: translateY(-5px); }
+        .stock-header { display: flex; justify-content: space-between; margin-bottom: 15px; }
+        .stock-symbol { font-weight: bold; font-size: 18px; color: #333; }
+        .stock-name { color: #666; font-size: 14px; margin-bottom: 15px; }
+        .stock-price { font-size: 24px; font-weight: bold; color: #667eea; margin-bottom: 10px; }
+        .stock-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 12px; }
+        .stock-stats div { padding: 5px; background: #f5f5f5; border-radius: 5px; }
+        .stock-stats span { font-weight: bold; }
+        .btn { display: inline-block; padding: 10px 20px; background: linear-gradient(135deg, #667eea, #764ba2); color: white; text-decoration: none; border-radius: 5px; margin-top: 10px; text-align: center; }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="navbar-content">
+            <h1>📈 Stock Trading</h1>
+            <div class="navbar-links">
+                <a href="/dashboard">Dashboard</a>
+                <a href="/stocks">Stocks</a>
+                <a href="/portfolio">Portfolio</a>
+                <a href="/transactions">Transactions</a>
+                <a href="/logout">Logout</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="header">
+            <h2>Browse All Stocks (<span th:text="${#lists.size(stocks)}"></span> available)</h2>
+            <input type="text" class="search-box" id="searchInput" placeholder="Search stocks..." onkeyup="filterStocks()">
+        </div>
+        
+        <div class="stocks-grid" id="stocksGrid">
+            <div th:each="stock : ${stocks}" class="stock-card" th:onclick="'window.location.href=\'/stocks/' + ${stock.id} + '\''">
+                <div class="stock-header">
+                    <div class="stock-symbol" th:text="${stock.symbol}"></div>
+                </div>
+                <div class="stock-name" th:text="${stock.name}"></div>
+                <div class="stock-price">₹<span th:text="${#numbers.formatDecimal(stock.currentPrice, 0, 'COMMA', 2, 'POINT')}"></span></div>
+                <div class="stock-stats">
+                    <div>High: ₹<span th:text="${#numbers.formatDecimal(stock.highPrice, 0, 2, 'POINT')}"></span></div>
+                    <div>Low: ₹<span th:text="${#numbers.formatDecimal(stock.lowPrice, 0, 2, 'POINT')}"></span></div>
+                    <div>RSI: <span th:text="${#numbers.formatDecimal(stock.rsi, 0, 2, 'POINT')}"></span></div>
+                    <div>SMA: ₹<span th:text="${#numbers.formatDecimal(stock.sma, 0, 2, 'POINT')}"></span></div>
+                </div>
+                <a th:href="@{/stocks/{id}(id=${stock.id})}" class="btn">View Details & Trade</a>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function filterStocks() {
+            var input = document.getElementById('searchInput');
+            var filter = input.value.toUpperCase();
+            var cards = document.getElementsByClassName('stock-card');
+            
+            for (var i = 0; i < cards.length; i++) {
+                var symbol = cards[i].getElementsByClassName('stock-symbol')[0].textContent;
+                var name = cards[i].getElementsByClassName('stock-name')[0].textContent;
+                if (symbol.toUpperCase().indexOf(filter) > -1 || name.toUpperCase().indexOf(filter) > -1) {
+                    cards[i].style.display = "";
+                } else {
+                    cards[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+</body>
+</html>

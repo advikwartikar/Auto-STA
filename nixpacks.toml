@@ -1,0 +1,8 @@
+[phases.setup]
+nixPkgs = ['maven', 'jdk17']
+
+[phases.build]
+cmds = ['mvn clean install -DskipTests']
+
+[start]
+cmd = 'mvn spring-boot:run'

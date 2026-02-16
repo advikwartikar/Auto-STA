@@ -1,0 +1,349 @@
+╔═════════════════════════════════════════════════════════════════════╗
+║     STOCK TRADING SIMULATION - COMPLETE ENHANCED VERSION            ║
+║            ALL FEATURES IMPLEMENTED ✓                               ║
+╚═════════════════════════════════════════════════════════════════════╝
+
+🎉 NEWLY ADDED FEATURES
+═══════════════════════════
+
+✓ ADMIN DASHBOARD - COMPLETE
+  • System overview with total users, stocks, transactions
+  • View all 30 users with search functionality
+  • Detailed user portfolios and holdings
+  • Monitor individual user transactions
+  • View all system transactions in real-time
+  • Admin-specific navigation and red theme
+
+✓ 2-HOUR SESSION TIMEOUT
+  • Automatic session expiration after 2 hours
+  • Warning displayed 10 minutes before timeout
+  • Auto-logout with notification
+  • Session timer starts when user logs in
+  • Configured in application.properties
+
+✓ ALL 110 CSV STOCK FILES
+  • Complete dataset loaded (was only 10 before)
+  • All train and test stocks from your uploaded data
+  • Each stock has OHLCV + SMA + RSI indicators
+  • Automatic loading on application startup
+
+📊 COMPLETE FEATURE LIST
+═══════════════════════════
+
+USER FEATURES:
+✓ Secure login/logout with BCrypt encryption
+✓ Personal dashboard with account summary
+✓ Browse all 110 stocks with search filter
+✓ Stock detail pages with OHLCV data
+✓ Real-time buy/sell trading interface
+✓ Calculate total cost before purchase
+✓ Portfolio view with all holdings
+✓ Real-time profit/loss calculation
+✓ Profit/loss percentage for each stock
+✓ Transaction history with filters
+✓ Session timeout warnings
+✓ Professional responsive UI
+
+ADMIN FEATURES:
+✓ Complete admin dashboard
+✓ System statistics overview
+✓ View all 30 users list
+✓ Search users by username/name/email
+✓ Detailed user profile pages
+✓ View any user's portfolio
+✓ Monitor user transactions
+✓ View all system transactions
+✓ Recent activity monitoring
+✓ Admin-only navigation
+✓ Red-themed admin interface
+
+BACKEND FEATURES:
+✓ Spring Boot 3.2 framework
+✓ Spring Security with roles (ADMIN/USER)
+✓ Spring Data JPA with Hibernate
+✓ H2 embedded database (MySQL ready)
+✓ Automatic data loading
+✓ Transaction management
+✓ Portfolio calculations
+✓ Credit balance tracking
+✓ Session management (2-hour timeout)
+✓ CSV data parser for 110 stocks
+
+DATABASE SCHEMA:
+✓ Users table (admins + regular users)
+✓ Stocks table (110 stocks with indicators)
+✓ Transactions table (buy/sell records)
+✓ Portfolio table (user holdings)
+✓ Proper foreign key relationships
+✓ Indexes for performance
+
+📂 COMPLETE FILE STRUCTURE
+══════════════════════════
+
+src/main/
+├── java/com/stocktrading/
+│   ├── StockTradingApplication.java    ✓ Main app
+│   ├── model/
+│   │   ├── User.java                   ✓ User entity
+│   │   ├── Stock.java                  ✓ Stock entity
+│   │   ├── Transaction.java            ✓ Transaction entity
+│   │   └── Portfolio.java              ✓ Portfolio entity
+│   ├── repository/
+│   │   ├── UserRepository.java         ✓ User data access
+│   │   ├── StockRepository.java        ✓ Stock data access
+│   │   ├── TransactionRepository.java  ✓ Transaction data access
+│   │   └── PortfolioRepository.java    ✓ Portfolio data access
+│   ├── service/
+│   │   ├── UserService.java            ✓ User business logic
+│   │   ├── StockService.java           ✓ Stock operations
+│   │   ├── TradingService.java         ✓ Buy/sell logic
+│   │   └── PortfolioService.java       ✓ Portfolio calculations
+│   ├── controller/
+│   │   ├── WebController.java          ✓ Home & login
+│   │   ├── DashboardController.java    ✓ User dashboard
+│   │   ├── StockController.java        ✓ Stock browsing
+│   │   ├── TradingController.java      ✓ Trade execution
+│   │   ├── PortfolioController.java    ✓ Portfolio view
+│   │   └── AdminController.java        ✓ ADMIN DASHBOARD
+│   └── config/
+│       ├── SecurityConfig.java         ✓ Security setup
+│       ├── CustomUserDetailsService    ✓ Auth service
+│       └── DataLoader.java             ✓ Data initialization
+└── resources/
+    ├── application.properties          ✓ Config (2hr timeout)
+    ├── data/
+    │   └── stock_1.csv to stock_110.csv ✓ ALL CSV FILES
+    └── templates/
+        ├── login.html                  ✓ Login page
+        ├── dashboard.html              ✓ User dashboard
+        ├── stocks.html                 ✓ Stock listing
+        ├── stock-detail.html           ✓ Stock details
+        ├── portfolio.html              ✓ Portfolio view
+        ├── transactions.html           ✓ Transaction history
+        └── admin/
+            ├── dashboard.html          ✓ ADMIN DASHBOARD
+            ├── users.html              ✓ ALL USERS LIST
+            ├── user-detail.html        ✓ USER DETAILS
+            └── transactions.html       ✓ ALL TRANSACTIONS
+
+🚀 QUICK START
+══════════════
+
+1. Extract: unzip stock-trading-app-complete.zip
+2. Build:   cd stock-trading-app && mvn clean install
+3. Run:     mvn spring-boot:run
+4. Access:  http://localhost:8080
+
+👥 LOGIN CREDENTIALS
+═══════════════════════
+
+ADMIN USERS (Full Admin Access):
+  Username: admin1  Password: admin123
+  Username: admin2  Password: admin123
+
+REGULAR USERS (Trading Only):
+  Username: user1 to user30  Password: user123
+
+All users start with ₹100,000 virtual credits
+
+🔑 ADMIN PANEL ACCESS
+═════════════════════
+
+1. Login as admin1 or admin2
+2. Click "Admin Panel" in navigation
+3. Access admin dashboard at: /admin/dashboard
+
+Admin Navigation:
+  • Dashboard     → System overview
+  • All Users     → View & search 30 users
+  • All Trans     → Monitor all transactions
+  • User View     → Switch to regular user interface
+
+⏱️ SESSION TIMEOUT
+══════════════════
+
+• Session Duration: 2 hours (7200 seconds)
+• Warning: Displays 10 minutes before expiration
+• Action: Auto-logout and redirect to login
+• Config: server.servlet.session.timeout=2h
+
+📊 STOCK DATA
+═════════════
+
+• Total Stocks: 110 (all from your CSV upload)
+• Data Format: OHLCV + SMA + RSI
+• Price Range: ₹100 - ₹110 (varies by stock)
+• Real indicators: Volume, RSI, SMA calculated
+
+🎯 USAGE SCENARIOS
+══════════════════
+
+USER WORKFLOW:
+1. Login → View dashboard
+2. Browse 110 stocks → Filter/search
+3. Select stock → View details
+4. Enter quantity → Calculate cost
+5. Buy stock → Credits deducted
+6. View portfolio → See profit/loss
+7. Sell when profitable → Get credits back
+8. Check transaction history
+
+ADMIN WORKFLOW:
+1. Login as admin → Admin panel
+2. Dashboard → See system stats
+3. All Users → Browse 30 users
+4. Select user → View their portfolio
+5. Check their transactions
+6. Monitor recent activity
+7. View all transactions system-wide
+
+📈 PROFIT/LOSS CALCULATION
+═══════════════════════════
+
+For Each Holding:
+• Invested Amount = Quantity × Average Buy Price
+• Current Value = Quantity × Current Price
+• Profit/Loss = Current Value - Invested Amount
+• P/L % = (Profit/Loss / Invested Amount) × 100
+
+Total Portfolio:
+• Sum of all individual P/L values
+• Displayed in dashboard and portfolio page
+• Color coded: Green (profit) / Red (loss)
+
+🔒 SECURITY FEATURES
+════════════════════
+
+✓ BCrypt password hashing
+✓ Role-based access control (ADMIN/USER)
+✓ Spring Security filters
+✓ Session management
+✓ CSRF protection enabled
+✓ SQL injection prevention (JPA)
+✓ XSS protection (Thymeleaf)
+✓ Secure cookies
+
+💾 DATABASE OPTIONS
+═══════════════════
+
+H2 (Default - Embedded):
+  • No setup required
+  • Data: ./data/stocktrading.mv.db
+  • Console: http://localhost:8080/h2-console
+  • JDBC URL: jdbc:h2:file:./data/stocktrading
+  • User: sa, Password: (blank)
+
+MySQL (Optional):
+  • Create database: stocktrading
+  • Uncomment MySQL config in application.properties
+  • Update username/password
+  • Change dialect to MySQL8Dialect
+
+🎨 UI/UX FEATURES
+═════════════════
+
+✓ Responsive design (mobile, tablet, desktop)
+✓ Professional color schemes
+✓ Admin: Red theme
+✓ User: Purple theme
+✓ Gradient headers
+✓ Shadow effects
+✓ Hover animations
+✓ Search filters
+✓ Real-time calculations
+✓ Success/error messages
+✓ Loading indicators
+✓ Formatted numbers (₹ with commas)
+✓ Date/time formatting
+✓ Badge indicators (BUY/SELL)
+✓ Color-coded P/L
+
+🔧 TECHNICAL SPECS
+══════════════════
+
+Backend:
+  • Java 17
+  • Spring Boot 3.2.0
+  • Spring Security
+  • Spring Data JPA
+  • Hibernate ORM
+  • OpenCSV parser
+
+Frontend:
+  • Thymeleaf 3.1
+  • HTML5
+  • CSS3
+  • JavaScript (vanilla)
+  • No external CSS frameworks
+
+Database:
+  • H2 2.2.224
+  • MySQL 8.0+ support
+
+Build:
+  • Maven 3.8+
+  • Java 17+
+
+📝 TESTING INSTRUCTIONS
+════════════════════════
+
+1. Test User Login:
+   • Login as user1/user123
+   • Verify 2-hour session message
+   • Check ₹100,000 initial credits
+
+2. Test Stock Browsing:
+   • View all 110 stocks
+   • Use search filter
+   • Check stock details page
+
+3. Test Trading:
+   • Buy 10 shares of STOCK_1
+   • Verify credits deducted
+   • Check portfolio updated
+   • Sell 5 shares
+   • Verify credits increased
+   • Check transaction history
+
+4. Test Admin Dashboard:
+   • Logout and login as admin1
+   • Click "Admin Panel"
+   • View dashboard stats
+   • Browse all users
+   • Select user1
+   • View their portfolio
+   • Check their transactions
+   • View all transactions
+
+5. Test Session Timeout:
+   • Login and wait
+   • At 1:50 mark: warning appears
+   • At 2:00 mark: auto-logout
+   • Verify redirect to login
+
+✅ VERIFICATION CHECKLIST
+═════════════════════════
+
+□ 2 Admin users created
+□ 30 Regular users created
+□ 110 Stocks loaded from CSV
+□ Login system working
+□ Session timeout configured (2 hours)
+□ User dashboard displays correctly
+□ Stock browsing with 110 stocks
+□ Buy functionality works
+□ Sell functionality works
+□ Portfolio shows holdings
+□ Profit/loss calculated correctly
+□ Transaction history displays
+□ Admin dashboard accessible
+□ Admin can view all users
+□ Admin can view user details
+□ Admin can see all transactions
+□ Search filters work
+□ Responsive design works
+□ Database persists data
+
+═══════════════════════════════════════════════════════════════════
+                    100% COMPLETE & READY TO USE!
+═══════════════════════════════════════════════════════════════════

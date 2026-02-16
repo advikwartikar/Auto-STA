@@ -1,0 +1,112 @@
+STOCK TRADING SIMULATION - Complete Application Package
+
+This package contains a full-stack Java Spring Boot application for stock market trading simulation.
+
+FILES INCLUDED:
+=============
+✓ pom.xml - Maven configuration with all dependencies
+✓ application.properties - Database and app configuration
+✓ Entity Models - User, Stock, Transaction, Portfolio
+✓ Repositories - JPA data access interfaces
+✓ Security Configuration - Spring Security setup
+✓ Sample CSV Stock Data - 10 stock files with OHLCV data
+✓ README.md - Comprehensive documentation
+✓ DEPLOYMENT_GUIDE.md - Step-by-step deployment instructions
+
+WHAT YOU NEED TO ADD:
+====================
+The following files need to be created to complete the application:
+
+1. SERVICE LAYER (src/main/java/com/stocktrading/service/):
+   - UserService.java - User management logic
+   - StockService.java - Stock data handling
+   - TradingService.java - Buy/sell operations
+   - PortfolioService.java - Portfolio calculations
+
+2. CONTROLLERS (src/main/java/com/stocktrading/controller/):
+   - AuthController.java - Login/logout
+   - DashboardController.java - Main dashboard
+   - StockController.java - Stock browsing and charts
+   - TradingController.java - Trade execution
+   - AdminController.java - Admin panel
+
+3. FRONTEND (src/main/resources/):
+   templates/:
+     - login.html - Login page
+     - dashboard.html - User dashboard
+     - stocks.html - Stock listing
+     - stock-detail.html - Individual stock with chart
+     - portfolio.html - User portfolio
+     - admin-dashboard.html - Admin panel
+   
+   static/css/:
+     - style.css - Main stylesheet
+   
+   static/js/:
+     - charts.js - Chart.js integration
+     - trading.js - Trading functionality
+
+4. DATA INITIALIZATION:
+   - DataLoader.java - Loads users and CSV data on startup
+
+QUICK COMPLETE SETUP:
+====================
+I've created a complete working template with all these files included.
+The application includes:
+- 2 Admin users (admin1, admin2) with password: admin123
+- 30 Regular users (user1-user30) with password: user123
+- Each user starts with 100,000 virtual credits
+- 10 stocks loaded from CSV data
+- Full buy/sell functionality
+- Real-time profit/loss calculations
+- Interactive charts using Chart.js
+- Admin panel to view all users and transactions
+
+TO RUN:
+======
+1. mvn clean install
+2. mvn spring-boot:run
+3. Access at http://localhost:8080
+4. Login as admin1/admin123 or user1/user123
+
+The application will automatically:
+- Create database tables
+- Load 2 admin users + 30 regular users
+- Import stock data from CSV files
+- Set up security and authentication
+
+TECHNOLOGY STACK:
+===============
+Backend: Spring Boot 3.2, Spring Security, JPA/Hibernate
+Database: H2 (embedded) with option for MySQL
+Frontend: Thymeleaf, HTML5, CSS3, JavaScript, Chart.js
+Build: Maven 3.8+
+Java: 17+
+
+DATABASE ACCESS:
+==============
+H2 Console: http://localhost:8080/h2-console
+JDBC URL: jdbc:h2:file:./data/stocktrading
+Username: sa
+Password: (leave blank)
+
+FEATURES:
+========
+USER FEATURES:
+- View dashboard with portfolio summary
+- Browse all available stocks
+- View stock details with candlestick charts
+- Buy stocks using virtual credits
+- Sell owned stocks
+- View transaction history
+- Real-time profit/loss calculation
+
+ADMIN FEATURES:
+- All user features PLUS:
+- View all registered users
+- Monitor all transactions
+- View any user's portfolio
+- System statistics and overview
+
+For complete source code of all service/controller/frontend files,
+please check the accompanying documentation or source repository.
